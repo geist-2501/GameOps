@@ -9,7 +9,7 @@ Simply add the contents to a ` .zip ` archive and then install through blender l
 ### Zip Splits.
 Zip splits simply works like 'Merge by Distance' except it doesn't merge the vertices - it just moves them.
 
-### [IN DEV] Generate High + Low.
+### Generate High + Low.
 Takes the source mesh and automatically applies modifiers in the correct order to make a high and low poly mesh.
 
 ### [PLANNED] Auto Exporter.
