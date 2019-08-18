@@ -11,23 +11,23 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-bl_info = {
-    "name" : "GameOps",
-    "author" : "geist-2501",
-    "description" : "A suite of tools for HardOps game asset modelling.",
-    "blender" : (2, 80, 0),
-    "version" : (0, 0, 2),
-    "location" : "Toolshelf > Utilities",
-    "warning" : "",
-    "category" : "Utility"
-}
-
 import bpy
 
-from . test_panel import GO_PT_Panel
+from . button_panel import GO_PT_Panel
 from . zip_splits import GO_OT_zip_splits
+from . generate_meshes import GO_OT_gen_meshes
 
-classes = (GO_PT_Panel, GO_OT_zip_splits)
+classes = (GO_PT_Panel, GO_OT_zip_splits, GO_OT_gen_meshes)
 
 register, unregister = bpy.utils.register_classes_factory(classes)
 
+bl_info = {
+    "name": "GameOps",
+    "author": "geist-2501",
+    "description": "A suite of tools for HardOps game asset modelling.",
+    "blender": (2, 80, 0),
+    "version": (0, 0, 3),
+    "location": "Toolshelf > Utilities",
+    "warning": "",
+    "category": "Utility"
+}

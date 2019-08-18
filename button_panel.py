@@ -1,5 +1,6 @@
 import bpy
 
+
 class GO_PT_Panel(bpy.types.Panel):
     bl_idname = "object.go_pt_panel"
     bl_label = "GameOps"
@@ -10,4 +11,6 @@ class GO_PT_Panel(bpy.types.Panel):
     def draw(self, context):
         layout = self.layout
         row = layout.row()
-        op_zip_splits = row.operator('object.go_ot_zip_splits', text="Zip Splits")
+        row.operator('object.go_ot_zip_splits', text="Zip Splits")
+        row = layout.row()
+        row.operator('object.go_ot_gen_meshes', text="Generate Meshes")

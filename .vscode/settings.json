@@ -1,3 +1,17 @@
 {
-    "python.linting.enabled": false
+    "python.autoComplete.extraPaths": [
+        "D:\\Blender\\blender_autocomplete\\2.80",
+        "D:\\Program Files\\python\\Lib\\site-packages"
+    ],
+    "python.linting.pylintArgs": [
+        "--init-hook",
+        "import sys; sys.path.append('D:\\Blender\\blender_autocomplete\\2.80')"
+    ],
+    "python.linting.enabled": true,
+    "python.pythonPath": "D:\\Program Files\\python\\python.exe",
+    "python.linting.pep8Enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.pep8Args": [
+        "--ignore=W291,W391,W293,E701,E501"
+    ]
 }
