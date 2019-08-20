@@ -90,8 +90,32 @@ class GO_OT_gen_meshes(bpy.types.Operator):
                 pass
             pass
 
+            bpy.data.collections.remove(bpy.data.collections[name])
+
             bpy.ops.object.collection_objects_select()
             bpy.ops.object.duplicate()
-            bpy.ops.object.move_to_collection(collection_index=present + 1)
+            bpy.ops.object.move_to_collection(collection_index=0, is_new=True, new_collection_name=name)
+
+        pass
+
+    def auto_name(self, coll_name):
+
+        objs = bpy.data.collections[coll_name].all_objects
+        bpy.ops.object.editmode_toggle()
+        bpy.ops.mesh.separate(type='LOOSE')
+        bpy.ops.object.editmode_toggle()
+
+        objs = bpy.data.collections[coll_name].all_objects
+
+        for obj in objs:
+            if coll_name == self.go_coll_high:
+                obj.name = obj.name + '_' + self.go_suffix_high
+            else:
+                obj.name = obj.name + '_' + self.go_suffix_low
+            pass
+
+        pass
+
+    def hide_all_collections():
 
         pass
