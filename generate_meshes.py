@@ -10,11 +10,12 @@ class GO_OT_gen_meshes(bpy.types.Operator):
     go_coll_high = "High"
     go_coll_low = "Low"
 
-    go_suffix_high: bpy.props.StringProperty(name='High Poly Suffix', default='high')
-    go_suffix_low: bpy.props.StringProperty(name='Low Poly Suffix', default='low')
-
     def execute(self, context):
 
+        # Use for naming objects.
+        name_img = bpy.data.collections[0].all_objects
+
+        # Make the collections and fill them.
         self.make_collections(self.go_coll_high)
         self.make_collections(self.go_coll_low)
 
@@ -63,6 +64,10 @@ class GO_OT_gen_meshes(bpy.types.Operator):
                 pass
             pass
 
+        # Split the mesh up.
+        self.auto_split(self.go_coll_high)
+        self.auto_split(self.go_coll_low)
+
         self.report({'INFO'}, 'Success!')
         return {'FINISHED'}
 
@@ -96,26 +101,34 @@ class GO_OT_gen_meshes(bpy.types.Operator):
             bpy.ops.object.duplicate()
             bpy.ops.object.move_to_collection(collection_index=0, is_new=True, new_collection_name=name)
 
-        pass
-
-    def auto_name(self, coll_name):
-
-        objs = bpy.data.collections[coll_name].all_objects
-        bpy.ops.object.editmode_toggle()
-        bpy.ops.mesh.separate(type='LOOSE')
-        bpy.ops.object.editmode_toggle()
-
-        objs = bpy.data.collections[coll_name].all_objects
-
-        for obj in objs:
-            if coll_name == self.go_coll_high:
-                obj.name = obj.name + '_' + self.go_suffix_high
-            else:
-                obj.name = obj.name + '_' + self.go_suffix_low
             pass
 
         pass
 
-    def hide_all_collections():
+    def auto_split(self, coll_name):
+
+        self.deselect()
+
+        objs = bpy.data.collections[coll_name].all_objects
+
+        for obj in objs:
+            obj.select_set(True)
+            pass
+
+        bpy.ops.object.editmode_toggle()
+        bpy.ops.mesh.separate(type='LOOSE')
+        bpy.ops.object.editmode_toggle()
 
         pass
+
+    def deselect(self):
+        for ob in bpy.context.selected_objects:
+            ob.select_set(False)
+            pass
+        pass
+
+    def select_all(self, objs):
+        for obj in objs:
+            obj.select_set(True)
+            pass
+        pass 

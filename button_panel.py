@@ -14,3 +14,5 @@ class GO_PT_Panel(bpy.types.Panel):
         row.operator('object.go_ot_zip_splits', text="Zip Splits")
         row = layout.row()
         row.operator('object.go_ot_gen_meshes', text="Generate Meshes")
+        row = layout.row()
+        row.operator('object.go_ot_auto_name', text="Auto Name")
